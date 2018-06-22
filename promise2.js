@@ -22,7 +22,7 @@ const laterWithEvent = () => {
   return new Promise((resolve, reject) => {
     console.log('FIRST!')
 
-    myEmitter.on('message', (msg) => {
+    myEmitter.once('message', (msg) => {
       console.log('MESSAGE: ', msg)
       resolve(msg)
     })
@@ -33,7 +33,15 @@ laterWithEvent().then((res) => {
   console.log('IN THEN: ', res)
 })
 
+laterWithEvent().then((res) => {
+  console.log('IN THEN2: ', res)
+})
+
 setTimeout(() => {
   myEmitter.emit('message', 'baner')
-}, 6000)
+}, 3000)
+
+setTimeout(() => {
+  myEmitter.emit('message', 'baner2')
+}, 5000)
 

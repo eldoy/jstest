@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Test</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue"></script>
+
+  <div id="app">
+    <input v-model.lazy="name">
+    <div>{{ name }}</div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        name: 'John'
+      },
+      watch: {
+        name: function(name) {
+          if (name === 'Jacob') {
+            this.name = 'Joseph'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
