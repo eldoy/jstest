@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perf</title>
+</head>
+<body>
+  <script>
+    var n = 100
+
+    var b = document.body
+    b.innerHTML = ''
+    var start = new Date()
+    for (var i = 0; i < n; i++) {
+      var e = document.createElement('div')
+      e.textContent = 'Hello' + i
+      b.append(e)
+    }
+    var end1 = new Date() - start
+    console.log('NORMAL:', end1)
+
+    b.innerHTML = ''
+    start = new Date()
+    var f = document.createDocumentFragment()
+    for (var i = 0; i < n; i++) {
+      var e = document.createElement('div')
+      e.textContent = 'Hello' + i
+      f.append(e)
+    }
+    b.appendChild(f)
+    var end2 = new Date() - start
+    console.log('FRAGMENT:', end2)
+
+  </script>
+</body>
+</html>

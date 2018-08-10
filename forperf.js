@@ -13,8 +13,8 @@ function normal () {
 
 function es6 () {
   for (let j = 0; j < times; j++) {
-    for (let i in list) {
-      console.log(list[i])
+    for (let i of list) {
+      console.log(i)
     }
   }
 }
@@ -23,10 +23,10 @@ function es6 () {
 const start = new Date()
 
 // Bytt til denne for å kjøre normal for-løkke
-normal()
+// normal()
 
 // Bytt til denne for å teste es6:
-// es6()
+es6()
 
 // Kalkuler sluttid
 let end = new Date() - start
