@@ -2,7 +2,7 @@ const { MongoClient, ObjectId } = require('mongodb')
 
 var adapter = {}
 
-const url = 'mongodb://localhost:28017'
+const url = 'mongodb://localhost:27017/?replicaSet=rs'
 const name = 'yql'
 
 const connect = () => {
