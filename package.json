@@ -12,7 +12,7 @@
     "fake-indexeddb": "^2.0.4",
     "js-yaml": "^3.11.0",
     "lodash": "^4.17.10",
-    "mngo": "0.0.2",
+    "mngo": "^0.4.1",
     "mongodb": "^3.0.10",
     "pluralize": "^7.0.0",
     "vm2": "^3.6.0"

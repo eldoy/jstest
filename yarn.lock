@@ -61,9 +61,9 @@ memory-pager@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/memory-pager/-/memory-pager-1.1.0.tgz#9308915e0e972849fefbae6f8bc95d6b350e7344"
 
-mngo@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/mngo/-/mngo-0.0.2.tgz#ffd1dda6f60ce3b11be6fb639d07dfb43be585f7"
+mngo@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/mngo/-/mngo-0.4.1.tgz#e5607c2b380c733438c9d0273be0537bac21a03b"
   dependencies:
     mongodb "~3.0.8"
 
