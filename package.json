@@ -9,12 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cassandra-driver": "^4.1.0",
     "fake-indexeddb": "^2.0.4",
     "js-yaml": "^3.11.0",
+    "jsonschema": "^1.2.4",
     "lodash": "^4.17.10",
     "mngo": "^0.4.1",
     "mongodb": "^3.0.10",
     "pluralize": "^7.0.0",
-    "vm2": "^3.6.0"
+    "sirloin": "^0.8.5",
+    "vm2": "^3.6.0",
+    "wsrecon": "^0.3.1"
   }
 }
