@@ -4,8 +4,12 @@
       "@babel/preset-env",
       {
         "targets": {
-          "node": 10
-        }
+          "chrome": "58",
+          "ie": "11"
+        },
+        "modules": "commonjs",
+        "useBuiltIns": "usage",
+        "corejs": 3
       }
     ]
   ]
