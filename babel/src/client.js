@@ -1,6 +1,11 @@
-async function init () {
-  await new Promise(r => setTimeout(r, 2000))
-  console.log('DONE')
-}
+// async function init () {
+//   await new Promise(r => setTimeout(r, 2000))
+//   console.log('DONE')
+// }
 
-init()
+// init()
+
+function list(data) {
+  return `<ul>${ data.map(x => `<li>${x}</li>`)}</ul>`
+}
+list([1, 2, 3])

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div>
+      <main id="app"></main>
+    </div>
+    <script type="module">
+      import {html, render} from './node_modules/lit-html/lit-html.js'
+      const helloTemplate = (name) => html`<div>Hello ${name}!</div>`
+      console.time('lit')
+      for (var i = 0; i < 100; i++) {
+        for(var j = 0; j < 100; j++) {
+          render(helloTemplate(`${i}${j}`), document.querySelector('#app'))
+        }
+      }
+      console.timeEnd('lit')
+
+      console.time('html')
+      for (var i = 0; i < 100; i++) {
+        for(var j = 0; j < 100; j++) {
+          document.querySelector('#app').innerHTML = `<div>Hello ${i}${j}</div>`
+        }
+      }
+      console.timeEnd('html')
+
+      function hello (i, j) {
+        return `<div>Hello ${i}${j}</div>`
+      }
+
+      console.time('fn')
+      for (var i = 0; i < 100; i++) {
+        for(var j = 0; j < 100; j++) {
+          document.querySelector('#app').innerHTML = hello(i, j)
+        }
+      }
+      console.timeEnd('fn')
+
+      console.time('str')
+      for (var i = 0; i < 100; i++) {
+        for(var j = 0; j < 100; j++) {
+          document.querySelector('#app').innerHTML = '<div>Hello' + i + ' ' + j + '</div>'
+        }
+      }
+      console.timeEnd('str')
+
+      console.time('dir')
+      var r = ''
+      for (var i = 0; i < 100; i++) {
+        for(var j = 0; j < 100; j++) {
+          r = '<div>Hello' + i + ' ' + j + '</div>'
+        }
+      }
+      document.querySelector('#app').innerHTML = r
+      console.timeEnd('dir')
+    </script>
+  </body>
+</html>
