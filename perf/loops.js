@@ -2,7 +2,7 @@ const _ = require('lodash')
 
 const N = 100000000
 let tmp
-const numbers = [1,2,3,4,5,6,7,8,9,10];
+const numbers = [1,2,3,4,5,6,7,8,9,10]
 
 console.time('letfor-normal')
 for (let p = 0; p < N; p++) {
@@ -91,9 +91,3 @@ for (let p = 0; p < N; p++) {
   })
 }
 console.timeEnd('foreach-lodash')
-
-
-
-
-
-
