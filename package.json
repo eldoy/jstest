@@ -18,9 +18,9 @@
     "mngo": "^0.6.3",
     "mongodb": "^3.3.2",
     "pluralize": "^8.0.0",
+    "require-from-string": "^2.0.2",
     "sirloin": "^0.13.1",
     "vm2": "^3.8.4",
     "wsrecon": "^0.4.0"
-  },
-  "devDependencies": {}
+  }
 }

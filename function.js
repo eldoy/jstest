@@ -1,9 +1,5 @@
-
-
-
-
-(function(global) {
-  function h (tag, ...c) {
+;(function (global) {
+  function h(tag, ...c) {
     console.log(tag, c)
   }
   var context = {}
@@ -12,8 +8,7 @@
   f.call(context, 1, 2)
   // f(1, 2, 3)
   // global is now the global
-})(this);
-
+})(this)
 
 // var f = new Function('a', 'b', 'return a + b')
 
