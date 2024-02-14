@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Safedrive" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <title>Min side - Safedrive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="/bundle.js?v=7a0ccba"></script>
+  <link href="/bundle.css?v=7a0ccba" rel="stylesheet" type="text/css">
+  <script src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" defer async></script>
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+
+  <script>
+    window.api = waveorb('https://minside.safedrive.no/api')
+    window.user = null
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFM50NL389"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag('js', new Date())
+    gtag('config', 'G-YFM50NL389')
+  </script>
+
+
+</head>
+
+<body class="main-layout">
+  <div class="layout">
+
+    <header id="header">
+      <nav>
+        <div class="columns">
+          <div class="column safedrive-logo">
+            <a class="logo" href="https://safedrive.no">
+              <img src="/img/main-logo-black.svg" alt="safedrive logo" height="1" width="125" />
+            </a>
+          </div>
+          <div class="column links">
+            <a href="https://safedrive.no/om-safedrive/">Om Safedrive</a>
+            <a href="https://safedrive.no/bedrift/">Bedrift</a>
+            <a href="https://safedrive.no/kundeservice/">Kundeservice</a>
+            <a href="/profil">Min Side</a>
+          </div>
+          <div class="column buy">
+
+            <a class="button header" href="https://safedrive.no/produkt/safedrive-pro/">
+              Kjøp nå
+            </a>
+            <a class="button basket" href="https://safedrive.no/handlekurv/">
+              <img src="/img/basket.svg" alt="basket" height="18" width="18" />
+            </a>
+            <a class="burger" href="javascript:void(0)" onclick="(function() {
+                      q('site-menu').classList.add('visible')
+                      document.body.style.overflow = 'hidden'
+                    }())">
+              <img src="/img/burger.svg" alt="burger menu icon" height="24" width="24" />
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="notify">
+      <div class="flash" id="flash"></div>
+    </div>
+    <main>
+      <div class="login">
+        <h1>Innlogging</h1>
+        <div id="phone-input-section">
+
+          <form class="login-form" onsubmit="return false">
+            <h4 id="login-with-sms-phone">Logg inn med SMS</h4>
+            <p>
+              Vennligst verifiser deg med SMS-koden vi sender til ditt mobilnummer.
+            </p>
+            <input type="hidden" id="country" name="country" value="47" />
+            <div class="form-phone">
+              <div id="country-display">
+                <input class="icon" id="country-input" type="text" onclick="handleStartCountrySearch(this)"
+                  oninput="handleFilterCountrySearch(this)" value="🇳🇴 +47" onblur="handleFinishCountrySearch(this)"
+                  autocomplete="off" />
+              </div>
+              <div id="phone-input">
+                <input type="text" id="phone" placeholder="Telefonnummer" name="phone" data-default=""
+                  inputmode="numeric" pattern="[0-9]*" />
+              </div>
+            </div>
+            <div id="country-dropdown"></div>
+            <div style="margin-top:20px">
+              <button class="cta" onclick="handlePhoneNumber(this)">Send SMS</button>
+            </div>
+          </form>
+          <script>
+            window.countries = [{ "name": "Norway", "code": "47", "flag": "🇳🇴" }, { "name": "Sweden", "code": "46", "flag": "🇸🇪" }, { "name": "Denmark", "code": "45", "flag": "🇩🇰" }, { "name": "Finland", "code": "358", "flag": "🇫🇮" }, { "name": "Albania", "code": "355", "flag": "🇦🇱" }, { "name": "Andorra", "code": "376", "flag": "🇦🇩" }, { "name": "Austria", "code": "43", "flag": "🇦🇹" }, { "name": "Belarus", "code": "375", "flag": "🇧🇾" }, { "name": "Belgium", "code": "32", "flag": "🇧🇪" }, { "name": "Bosnia & Herzegovina", "code": "387", "flag": "🇧🇦" }, { "name": "Bulgaria", "code": "359", "flag": "🇧🇬" }, { "name": "Canada", "code": "1", "flag": "🇨🇦" }, { "name": "Croatia", "code": "385", "flag": "🇭🇷" }, { "name": "Cyprus", "code": "357", "flag": "🇨🇾" }, { "name": "Czech Republic", "code": "420", "flag": "🇨🇿" }, { "name": "Estonia", "code": "372", "flag": "🇪🇪" }, { "name": "Faroe Islands", "code": "298", "flag": "🇫🇴" }, { "name": "France", "code": "33", "flag": "🇫🇷" }, { "name": "Georgia", "code": "995", "flag": "🇬🇪" }, { "name": "Germany", "code": "49", "flag": "🇩🇪" }, { "name": "Gibraltar", "code": "350", "flag": "🇬🇮" }, { "name": "Greece", "code": "30", "flag": "🇬🇷" }, { "name": "Guernsey", "code": "44", "flag": "🇬🇬" }, { "name": "Hungary", "code": "36", "flag": "🇭🇺" }, { "name": "Iceland", "code": "354", "flag": "🇮🇸" }, { "name": "Ireland", "code": "353", "flag": "🇮🇪" }, { "name": "Isle Of Man", "code": "44", "flag": "🇮🇲" }, { "name": "Italy", "code": "39", "flag": "🇮🇹" }, { "name": "Jersey", "code": "44", "flag": "🇯🇪" }, { "name": "Latvia", "code": "371", "flag": "🇱🇻" }, { "name": "Liechtenstein", "code": "423", "flag": "🇱🇮" }, { "name": "Lithuania", "code": "370", "flag": "🇱🇹" }, { "name": "Luxembourg", "code": "352", "flag": "🇱🇺" }, { "name": "Macedonia", "code": "389", "flag": "🇲🇰" }, { "name": "Malta", "code": "356", "flag": "🇲🇹" }, { "name": "Moldova", "code": "373", "flag": "🇲🇩" }, { "name": "Monaco", "code": "377", "flag": "🇲🇨" }, { "name": "Montenegro", "code": "382", "flag": "🇲🇪" }, { "name": "Netherlands", "code": "31", "flag": "🇳🇱" }, { "name": "Poland", "code": "48", "flag": "🇵🇱" }, { "name": "Portugal", "code": "351", "flag": "🇵🇹" }, { "name": "Romania", "code": "40", "flag": "🇷🇴" }, { "name": "Russia", "code": "7", "flag": "🇷🇺" }, { "name": "San Marino", "code": "378", "flag": "🇸🇲" }, { "name": "Serbia", "code": "381", "flag": "🇷🇸" }, { "name": "Slovakia", "code": "421", "flag": "🇸🇰" }, { "name": "Slovenia", "code": "386", "flag": "🇸🇮" }, { "name": "Spain", "code": "34", "flag": "🇪🇸" }, { "name": "Switzerland", "code": "41", "flag": "🇨🇭" }, { "name": "Ukraine", "code": "380", "flag": "🇺🇦" }, { "name": "United Kingdom", "code": "44", "flag": "🇬🇧" }, { "name": "United States", "code": "1", "flag": "🇺🇸" }, { "name": "Vatican City State", "code": "379", "flag": "🇻🇦" }, { "name": "Åland Islands", "code": "358", "flag": "🇦🇽" }]
+            window.current = window.countries[0]
+            window.hits = []
+            window.listVisible = false
+            function renderCurrentCountry() {
+              // return `${current.flag}  ${esc(current.name)} ${current.code}`
+              return `${current.flag} +${current.code}`
+            }
+            function renderCountry(country) {
+              var classes = 'country-list-item'
+              if (country.name == window.current.name) {
+                classes += ' current'
+              }
+              return /* HTML */ `
+      <li
+        class="${classes}"
+        onmousedown="handleSelectCountry(this)"
+        data-code="${country.code}"
+        data-name="${esc(country.name)}"
+      >
+        <span class="country-flag">${country.flag}</span>
+        <span class="country-name">${esc(country.name)}</span>
+        <span class="country-code">+${country.code}</span>
+      </li>
+    `
+            }
+            function renderCountryList(hits) {
+              var list = ''
+              if (hits.length) {
+                list = hits.map(renderCountry).join('')
+              } else {
+                // Not in use:
+                // list = `<li class="country-none">Ingen land funnet.</li>`
+                return
+              }
+              html('#country-dropdown', `<ul>${list}</ul>`)
+            }
+            function handleCloseList() {
+              delete window.hitIndex
+              window.listVisible = false
+              text('#country-dropdown', '')
+            }
+            function handleStartCountrySearch(input) {
+              if (!input) {
+                input = q('#country-input')
+              }
+              if (window.listVisible) {
+                return handleFinishCountrySearch(input)
+              }
+              if (input.active) return
+              input.active = true
+              input.placeholder = input.value
+              input.value = ''
+              input.focus()
+              handleFilterCountrySearch(input)
+            }
+            function handleFilterCountrySearch(input) {
+              var val = input.value.trim().toLowerCase()
+              // Not in use, prevents dropdown before typing 2 characters
+              // if (val.length < 2) {
+              //   return handleCloseList()
+              // }
+              window.hits = window.countries.filter(function (c) {
+                return c.code.startsWith(val) || c.name.toLowerCase().startsWith(val)
+              })
+              window.listVisible = !!window.hits.length
+              renderCountryList(window.hits)
+            }
+            function handleFinishCountrySearch(input) {
+              if (!input) {
+                input = q('#country-input')
+              }
+              handleCloseList()
+              input.active = false
+              input.value = renderCurrentCountry(window.current)
+              input.placeholder = ''
+            }
+            function handleSelectCountry(li) {
+              var code = li.getAttribute('data-code')
+              var name = li.getAttribute('data-name')
+              q('#country').value = code
+              window.current = window.countries.find(
+                (x) => x.code == code && x.name == name
+              )
+            }
+            function handleKeyPress(e) {
+              if (e.code == 'Enter' && window.listVisible) {
+                e.preventDefault()
+                var active = q('li.country-list-item.active') || q('li.country-list-item')
+                if (active) {
+                  handleSelectCountry(active)
+                }
+                return handleFinishCountrySearch()
+              }
+
+              if (e.code == 'ArrowDown' && !window.listVisible) {
+                return handleStartCountrySearch()
+              }
+
+              if (e.code == 'Escape') {
+                return handleFinishCountrySearch()
+              }
+
+              if (e.code == 'ArrowUp' || e.code == 'ArrowDown') {
+                var up = e.code == 'ArrowUp'
+                var list = q('#country-dropdown ul')
+                var items = Array.from(qa('li', list))
+
+                function adjustHitIndex() {
+                  if (typeof window.hitIndex == 'undefined') {
+                    window.hitIndex = up ? items.length : -1
+                  }
+                  window.hitIndex += up ? -1 : 1
+                  if (window.hitIndex >= items.length) {
+                    window.hitIndex = items.length - 1
+                  }
+                  if (window.hitIndex < 0) {
+                    window.hitIndex = 0
+                  }
+                }
+
+                function activate() {
+                  for (var item of items) {
+                    item.classList.remove('active')
+                  }
+                  var item = items[window.hitIndex]
+                  item.classList.add('active')
+                  return item
+                }
+
+                function adjustScroll() {
+                  var check = active.nextElementSibling
+                  if (up) check = active.previousElementSibling
+                  var visible = check ? isVisible(check, list) : false
+                  let a = active.getBoundingClientRect()
+                  if (!visible) {
+                    list.scrollTop += up ? -a.height : a.height
+                  }
+                }
+
+                if (items.length) {
+                  adjustHitIndex()
+                  var active = activate()
+                  adjustScroll(active)
+                }
+              }
+            }
+            function initCountrySearch() {
+              q('#country-input').addEventListener('keydown', handleKeyPress)
+            }
+            initCountrySearch()
+          </script>
+
+        </div>
+        <div id="code-input-section" style="display:none">
+
+          <form class="login-form" onsubmit="return false">
+            <h4 id="login-with-sms-code">Logg inn med SMS</h4>
+            <p>
+              Vennligst verifiser deg med SMS-koden vi sender til ditt mobilnummer.
+            </p>
+            <div class="verify verify-success">
+              <div class="verify-content">
+                <img src="/img/arrow-info.svg" alt="arrow next" height="20" width="20" />
+                <span>Ny SMS ble sendt</span>
+              </div>
+            </div>
+            <div class="verify verify-unsuccess">
+              <div class="verify-content">
+                <img src="/img/icon-unsuccess.svg" alt="arrow failed" height="20" width="20" />
+                <span>Innlogging mislykkes. Vennligst skriv inn kode på nytt.</span>
+              </div>
+            </div>
+            <div class="form-phone">
+              <input type="text" id="code" class="phone" placeholder="Kode fra SMS" name="code" inputmode="numeric"
+                pattern="[0-9]*" autocomplete="one-time-code" />
+              <div class="loader" style="display:none">
+
+                <div class="spinner">
+                  <img src="/img/spinner.gif" height="24" width="24" />
+                </div>
+
+              </div>
+            </div>
+            <div style="margin-top:20px">
+              <button id="verify-button" class="cta" onclick="handleVerifyCode(this)">
+                Bekreft kode
+              </button>
+            </div>
+            <button id="verify-back-button" class="dark" onclick="handleGoback(this)">
+              Tilbake
+            </button>
+            <div class="new-code" style="cursor:pointer" onclick="handleNewCode(this)">
+              <div class="info-text">
+                <p style="margin-bottom:0;font-weight:500">
+                  Jeg har ikke mottatt SMS
+                </p>
+                <p style="font-size:16px">Send meg en ny kode</p>
+              </div>
+              <div class="arrow-next">
+                <span class="next">
+                  <img src="/img/arrow-next-short.svg" alt="arrow next" height="16" width="16" />
+                </span>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <p style="font-weight:500;margin:0">Har du problemer med innlogging?</p>
+        <p>
+          Ta kontakt med kundeservice på
+          <a class="dark" href="/cdn-cgi/l/email-protection#30405f4344704351565554425946551e5e5f"> <span
+              class="__cf_email__" data-cfemail="12627d6166526173747776607b64773c7c7d">[email&#160;protected]</span>
+          </a>
+        </p>
+      </div>
+      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+      <script>
+        async function handlePhoneNumber(btn) {
+          var values = serialize(btn.form)
+          values.phone = values.phone.trim().split(' ').join('')
+
+          if (!values.phone) {
+            return q('#phone').focus()
+          }
+
+          btn.disabled = true
+
+          var result = await api('/login/create', { values })
+
+          if (result.error) {
+            flash('Telefonnummeret er ikke gyldig', { class: 'error' })
+          } else {
+            store('phone', values)
+            q('#phone-input-section').style.display = 'none'
+            q('#code-input-section').style.display = 'block'
+            q('#code').value = result.code || ''
+            text('.flash', '')
+            // smoothScroll('#login-with-sms-code')
+          }
+
+          btn.disabled = false
+        }
+        function handleGoback() {
+          var btn = q('#verify-button')
+          q('.loader').style.display = 'none'
+          q('#code').style.display = 'block'
+          btn.innerHTML = 'Bekreft kode'
+          btn.disabled = false
+
+          q('#phone-input-section').style.display = 'block'
+          q('#code-input-section').style.display = 'none'
+          qa('.verify', function (el) {
+            el.style.display = 'none'
+          })
+          store('phone', null)
+          // smoothScroll('#login-with-sms-phone')
+          q('#phone').focus()
+        }
+        async function handleNewCode(el) {
+          if (window.isVerifying) return
+          qa('.verify', function (el) {
+            el.style.display = 'none'
+          })
+          if (el.disabled) return
+
+          el.disabled = true
+          var values = store('phone')
+          var result = await api('/login/create', { values })
+
+          if (result.error) {
+            alert(result.error.message)
+          } else {
+            q('#code').value = ''
+            q('.verify-success').style.display = 'block'
+          }
+
+          el.disabled = false
+        }
+        async function handleVerifyCode(btn) {
+          qa('.verify', function (el) {
+            el.style.display = 'none'
+          })
+
+          var values = serialize(btn.form)
+
+          if (!values.code) {
+            return q('#code').focus()
+          }
+
+          btn.disabled = true
+          q('#verify-back-button').disabled = true
+          q('.new-code').classList.add('disabled')
+          window.isVerifying = true
+
+          btn.innerHTML = 'Logger deg inn...'
+
+          q('#code').style.display = 'none'
+          q('.loader').style.display = 'block'
+
+          // await new Promise((r) => setTimeout(r, 2000))
+
+          var result = await api('/login/verify', { values })
+
+          if (result.ok) {
+            cookie('login', result.token)
+            window.location = '/profil'
+          } else {
+            q('.verify-unsuccess').style.display = 'block'
+            q('.loader').style.display = 'none'
+            q('#code').style.display = 'block'
+            q('#verify-back-button').disabled = false
+            q('.new-code').classList.remove('disabled')
+            btn.innerHTML = 'Bekreft kode'
+            btn.disabled = false
+            window.isVerifying = false
+          }
+        }
+        q('#phone').focus()
+      </script>
+    </main>
+    <site-menu>
+      <a href="javascript:void(0)" style="float:right;position:relative;right:20px" onclick="(function(){
+        q('site-menu').classList.remove('visible')
+        document.body.style.overflow = 'auto'
+      }())">
+        <img class="exit" src="/img/exit.svg" alt="exit icon" height="24" width="24" /></a>
+      <img src="/img/main-logo-black.svg" alt="safedrive logo" height="1" width="125" />
+      <ul class="links">
+        <li><a href="https://safedrive.no/om-safedrive/">Om Safedrive</a></li>
+        <li><a href="https://safedrive.no/bedrift/">Bedrift</a></li>
+        <li><a href="https://safedrive.no/kundeservice/">Kundeservice</a></li>
+        <li><a href="/">Min side</a></li>
+      </ul>
+      <a class="button dark" href="https://safedrive.no/produkt/safedrive-pro/">
+        KJØP NÅ
+      </a>
+    </site-menu>
+  </div>
+  <footer>
+    <div class="footer-content">
+      <div class="column left">
+        <img style="margin-bottom:1rem" src="/img/main-logo-white.svg" alt="safedrive logo" height="54" width="172" />
+        <p>
+          Safedrive AS Havnegata 1, <br />7800 Namsos <br />Organisasjonsnr:
+          NO917086885MVA
+        </p>
+      </div>
+      <div class="column center">
+        <ul>
+          <li>
+            <a href="https://safedrive.no/produkt/safedrive-pro/">Safedrive Pro</a>
+          </li>
+          <li><a href="https://safedrive.no/tilbehor/">Tilbehør</a></li>
+          <li><a href="https://safedrive.no/forhandlere/">Forhandlere</a></li>
+          <li><a href="https://safedrive.no/botgaranti/">Botgaranti</a></li>
+          <li><a href="https://safedrive.no/elggaranti/">Elggaranti</a></li>
+        </ul>
+      </div>
+      <div class="column right">
+        <ul>
+          <li><a href="https://safedrive.no/kundeservice/">Kundeservice</a></li>
+          <li><a href="https://safedrive.no/artikler/">Artikler</a></li>
+          <li>
+            <a href="https://safedrive.no/kundehistorier/">Kundehistorier</a>
+          </li>
+          <li>
+            <a href="https://safedrive.no/personvernerklaering/">Personvern</a>
+          </li>
+          <li>
+            <a href="https://safedrive.no/salgsbetingelser/">Betingelser</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trustpilot-widget" data-locale="nb-NO" data-template-id="5406e65db0d04a09e042d5fc"
+      data-businessunit-id="60acb4b964dd2700012a6016" data-style-height="28px" data-style-width="100%" data-theme="dark"
+      data-font-family="Barlow">
+      <a href="https://no.trustpilot.com/review/safedrive.no" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+
+    <div class="payment">
+      <img style="margin-right:32px" src="/img/klarna-logo.svg" alt="klarna" height="20" width="86" />
+      <img style="position:relative;top:5px" src="/img/vipps-logo.svg" alt="vipps" height="20" width="86" />
+    </div>
+    <div class="signature">© 2022 Safedrive AS – Nettside av Fjellvann</div>
+  </footer>
+  <script>
+    flash()
+    track()
+  </script>
+  <div class="modal"></div>
+</body>
+
+</html>
