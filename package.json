@@ -10,8 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "@xmldom/xmldom": "^0.8.10",
+    "bee-queue": "^1.7.1",
     "cassandra-driver": "^4.2.0",
-    "cheerio": "^1.0.0-rc.12",
     "extras": "^0.12.1",
     "fake-indexeddb": "^2.1.1",
     "htmlparser2": "^9.1.0",
@@ -19,7 +19,7 @@
     "jsdom": "^24.0.0",
     "jsonschema": "^1.2.4",
     "lit-html": "^1.1.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mngo": "^0.6.3",
     "mongodb": "^3.3.2",
     "pluralize": "^8.0.0",

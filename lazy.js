@@ -1,5 +1,5 @@
 var _require = require
-var require = function (moduleName) {
+var lazy = function (moduleName) {
   var module
   return new Proxy(
     function () {
@@ -18,11 +18,18 @@ var require = function (moduleName) {
     }
   )
 }
+var array = [1, 2, 3]
+
+var lodash = lazy('lodash')
+
+var result = lodash.concat(array, 5)
+
+console.log(result)
 
 var app = {}
 app.layouts = {}
 app.pages = {}
-app.layouts.main = require('./app/layouts/main.js')
+app.layouts.main = lazy('./app/layouts/main.js')
 
 app.layouts.main()
 
